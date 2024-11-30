@@ -19,10 +19,10 @@
             max-width: 800px;
             margin: 30px auto;
             background-color: #fff;
-            padding: 10px 40px 60px; /* Zwiększono padding na dole na przycisk */
+            padding: 10px 40px 60px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            position: relative; /* Ustawiono pozycjonowanie kontenera jako odniesienie */
+            position: relative;
         }
 
         header h1 {
@@ -78,6 +78,11 @@
             background-color: #9b0f00;
         }
 
+        button:focus {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+
         textarea {
             width: 100%;
             height: 60px;
@@ -92,9 +97,9 @@
         }
 
         .close-button {
-            position: absolute; /* Pozycjonowanie względem kontenera */
-            bottom: 20px; /* Odległość od dołu kontenera */
-            right: 20px; /* Odległość od prawej krawędzi kontenera */
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
             background-color: #0e0e0e;
             color: #eeeeee;
             border: none;
@@ -126,7 +131,7 @@
                 <div class="download-item"><span style="font-size: 16px;"><strong>EXE (antywirus)</strong></span> <button aria-label="Pobierz wersję EXE z antywirusem">Pobierz</button></div>
                 <div class="download-item"><span style="font-size: 16px;"><strong>Aplikacja na Maca</strong></span> <button aria-label="Pobierz aplikację na Maca">Pobierz</button></div>
                 <div class="download-item"><span style="font-size: 16px;"><strong>Oryginalny plik PDF plus grafiki z ich opisami</strong></span> <button aria-label="Pobierz panel pobierania">Pobierz</button></div>
-<div class="download-item"><span style="font-size: 16px;"><strong>Panel pobierania (udostępnianie i pobieranie plików z Twojego serwera)</strong></span> <button aria-label="Pobierz Panel pobierania" onclick="window.location.href='';">Pobierz</button></div>
+                <div class="download-item"><span style="font-size: 16px;"><strong>Panel pobierania (udostępnianie i pobieranie plików z Twojego serwera)</strong></span> <button aria-label="Pobierz Panel pobierania" onclick="window.location.href='https://drive.google.com/uc?export=download&id=19enx826bUG4rc9zsC9nEFKGFU60m4jE4';">Pobierz</button></div>
             </section>
             <section class="code-section">
                 <h2><br></h2>
@@ -135,14 +140,13 @@
                 <textarea readonly id="embed-code">&lt;div style=&quot;position:relative;width:100%;padding-top:56.25%;&quot;&gt;&lt;iframe src=&quot;URL_DO_E-BROSZURY&quot; style=&quot;position:absolute;width:100%;height:100%;border:none;top:0;left:0;&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;</textarea>
                 <button aria-label="Skopiuj kod osadzania" onclick="copyEmbedCode()">Kopiuj kod osadzania</button>
             </section>
-            <!-- Przycisk zamykania wewnątrz kontenera -->
             <button class="close-button" onclick="closeWindow()">Zamknij</button>
         </main>
     </div>
 
     <script>
         // Zmienna przechowująca aktualny URL e-broszury
-        var currentFlipbookUrl = window.location.href;  // Zmienna dynamicznie ustawiająca adres URL
+        var currentFlipbookUrl = window.location.href.split("panel-pobierania.html")[0];
 
         // Zmiana dynamicznie kodu osadzania w textarea
         var embedCode = document.getElementById("embed-code").value;
@@ -151,16 +155,22 @@
 
         // Funkcja do kopiowania kodu osadzania
         function copyEmbedCode() {
-            var copyText = document.getElementById("embed-code");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); // Dla mobilnych przeglądarek
-            document.execCommand("copy");
-            alert("Kod osadzania skopiowany!");
+            var copyText = document.getElementById("embed-code").value;
+            navigator.clipboard.writeText(copyText).then(() => {
+                alert("Kod osadzania skopiowany!");
+            }).catch(err => {
+                alert("Błąd przy kopiowaniu kodu: " + err);
+            });
         }
 
         // Funkcja zamykająca okno
         function closeWindow() {
             window.close();
+        }
+
+        // Funkcja otwierająca w nowym pomniejszonym oknie
+        function openPopup() {
+            window.open("panel-pobierania.html", "PanelPobierania", "width=600,height=800,scrollbars=yes");
         }
     </script>
 </body>
