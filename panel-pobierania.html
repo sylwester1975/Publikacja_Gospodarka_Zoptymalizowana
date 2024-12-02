@@ -126,7 +126,10 @@
         <main>
             <section class="download-section">
                 <p><strong><span style="font-size: 15px;">Wybierz format:</span></strong></p>
-                <div class="download-item"><span style="font-size: 16px;"><strong>HTML (udostępniaj wraz z plikiem panel-pobierania.html)</strong></span> <button aria-label="Pobierz wersję HTML" onclick="window.location.href='https://bit.ly/3ZdOc0D';">Pobierz</button></div>
+<div class="download-item">
+        <span style="font-size: 16px;"><strong>HTML (udostępniaj wraz z plikiem panel-pobierania.html)</strong></span>
+        <button aria-label="Pobierz wersję HTML" onclick="window.location.href=currentFlipbookUrl + 'wersja-html.html';">Pobierz</button>
+    </div>
                 <div class="download-item"><span style="font-size: 16px;"><strong>EXE</strong></span> <button aria-label="Pobierz wersję EXE" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1gCRfsJeqqZIor_8HbHJuU4g0MVHkvy5C';">Pobierz</button></div>
                 <div class="download-item"><span style="font-size: 16px;"><strong>EXE (antywirus)</strong></span> <button aria-label="Pobierz wersję EXE z antywirusem" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1Uhb_svZALqJHR92dBDPDbFaKSU15PtOl';">Pobierz</button></div>
                 <div class="download-item"><span style="font-size: 16px;"><strong>Aplikacja na Maca</strong></span> <button aria-label="Pobierz aplikację na Maca" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1Au-MNKKrJ7PK8az3lBa6isFGG5Xe27Vg';">Pobierz</button></div>
@@ -137,7 +140,7 @@
                 <h2><br></h2>
                 <h2><span style="font-size: 18px;">Pobierz kod osadzania</span></h2>
                 <p><strong><span style="font-size: 15px;">Skopiuj poniższy kod osadzania i wklej go do kodu HTML swojej strony, aby umieścić na niej e-broszurę:</span></strong></p>
-                <textarea readonly id="embed-code">&lt;div style=&quot;position:relative;width:100%;padding-top:56.25%;&quot;&gt;&lt;iframe src=&quot;URL_DO_E-BROSZURY&quot; style=&quot;position:absolute;width:100%;height:100%;border:none;top:0;left:0;&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;</textarea>
+                <textarea readonly id="embed-code"></textarea>
                 <button aria-label="Skopiuj kod osadzania" onclick="copyEmbedCode()">Kopiuj kod osadzania</button>
             </section>
             <button class="close-button" onclick="closeWindow()">Zamknij</button>
@@ -145,12 +148,11 @@
     </div>
 
     <script>
-        // Zmienna przechowująca aktualny URL e-broszury
-        var currentFlipbookUrl = window.location.href.split("panel-pobierania.html")[0];
+        // Dynamiczny URL e-broszury
+        var currentFlipbookUrl = window.location.href.split("panel-pobierania.html")[0] + "broszura.html";
 
         // Zmiana dynamicznie kodu osadzania w textarea
-        var embedCode = document.getElementById("embed-code").value;
-        embedCode = embedCode.replace("URL_DO_E-BROSZURY", currentFlipbookUrl);
+        var embedCode = `<div style="position:relative;width:100%;padding-top:56.25%;"><iframe src="${currentFlipbookUrl}" style="position:absolute;width:100%;height:100%;border:none;top:0;left:0;" allowtransparency="true" allowfullscreen="true"></iframe></div>`;
         document.getElementById("embed-code").value = embedCode;
 
         // Funkcja do kopiowania kodu osadzania
@@ -166,11 +168,6 @@
         // Funkcja zamykająca okno
         function closeWindow() {
             window.close();
-        }
-
-        // Funkcja otwierająca w nowym pomniejszonym oknie
-        function openPopup() {
-            window.open("panel-pobierania.html", "PanelPobierania", "width=600,height=800,scrollbars=yes");
         }
     </script>
 </body>
