@@ -29,7 +29,7 @@
         font-size: 1.4em;
         color: #000;
         margin-bottom: 15px;
-        text-align: left; /* Wyśrodkowanie nagłówka do lewej */
+        text-align: left; 
     }
 
     header h2 {
@@ -64,7 +64,6 @@
         font-weight: 600;
     }
 
-    /* Styl dla czerwonych przycisków */
     button {
         background-color: #B51200;
         color: #fff;
@@ -74,11 +73,10 @@
         font-weight: 600;
         border-radius: 5px;
         cursor: pointer;
-        width: 110px; /* Ujednolicona szerokość */
-        height: 40px; /* Zmniejszona wysokość do 40px */
+        width: 110px; 
+        height: 40px; 
     }
 
-    /* Efekt najechania dla czerwonych przycisków */
     button:hover {
         background-color: #9b0f00;
     }
@@ -88,7 +86,6 @@
         outline-offset: 2px;
     }
 
-    /* Styl dla niebieskich przycisków */
     .blue-button {
         background-color: #0012b5;
         color: #fff;
@@ -98,13 +95,12 @@
         font-weight: 600;
         border-radius: 5px;
         cursor: pointer;
-        width: 110px; /* Ujednolicona szerokość */
-        height: 40px; /* Zmniejszona wysokość do 40px */
+        width: 110px; 
+        height: 40px; 
     }
 
-    /* Efekt najechania dla niebieskich przycisków */
     .blue-button:hover {
-        background-color: #000a80; /* Przyciemniony odcień niebieskiego */
+        background-color: #000a80;
     }
 
     textarea {
@@ -132,33 +128,32 @@
         font-weight: 600;
         border-radius: 5px;
         cursor: pointer;
-        height: 40px; /* Zmniejszona wysokość do 40px */
+        height: 40px; 
     }
 
     .close-button:hover {
         background-color: #f19c01;
     }
 
-    /* Styl dla przycisku "Kopiuj kod osadzania" */
     button[aria-label="Skopiuj kod osadzania"] {
-        padding: 10px 20px; /* Padding w pionie i poziomie */
-        font-size: 1em; /* Rozmiar tekstu */
-        font-weight: 600; /* Grubość tekstu */
-        height: 40px; /* Zmniejszona wysokość do 40px */
-        border-radius: 5px; /* Zaokrąglone rogi */
+        padding: 10px 20px; 
+        font-size: 1em; 
+        font-weight: 600; 
+        height: 40px; 
+        border-radius: 5px; 
         cursor: pointer;
         display: inline-flex;
-        justify-content: center; /* Centrowanie poziome */
-        align-items: center; /* Centrowanie pionowe */
-        white-space: nowrap; /* Tekst w jednym wierszu */
-        min-width: 220px; /* Minimalna szerokość */
-        background-color: #B51200; /* Kolor tła */
-        color: #fff; /* Kolor tekstu */
-        border: none; /* Brak obramowania */
+        justify-content: center; 
+        align-items: center; 
+        white-space: nowrap; 
+        min-width: 220px; 
+        background-color: #B51200; 
+        color: #fff; 
+        border: none; 
     }
 
     button[aria-label="Skopiuj kod osadzania"]:hover {
-        background-color: #9b0f00; /* Kolor tła po najechaniu */
+        background-color: #9b0f00; 
     }
 </style>
 </head>
@@ -201,16 +196,13 @@
             <button class="close-button" onclick="closeWindow()">Zamknij</button>
         </main>
     </div>
-
+    
     <script>
-        // Dynamiczny URL e-broszury
         var currentFlipbookUrl = window.location.href.split("panel-pobierania.html")[0];
 
-        // Zmiana dynamicznie kodu osadzania w textarea
         var embedCode = `<div style="position:relative;width:100%;padding-top:56.25%;"><iframe src="${currentFlipbookUrl}" style="position:absolute;width:100%;height:100%;border:none;top:0;left:0;" allowtransparency="true" allowfullscreen="true"></iframe></div>`;
         document.getElementById("embed-code").value = embedCode;
 
-        // Funkcja do kopiowania kodu osadzania
         function copyEmbedCode() {
             var copyText = document.getElementById("embed-code").value;
             navigator.clipboard.writeText(copyText).then(() => {
@@ -220,11 +212,11 @@
             });
         }
 
-        // Funkcja zamykająca okno
         function closeWindow() {
             window.close();
         }
     </script>
+
 </body>
 
 </html>
